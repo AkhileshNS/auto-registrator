@@ -25,18 +25,16 @@ const autoRegister = async (port, name, usnValue, pwdValue, branch, index) => {
     await page.evaluate((el, value) => {el.value = value}, usn, usnValue);
     await page.evaluate((el, value) => {el.value = value}, pwd, pwdValue);
     await page.evaluate((el) => {el.click()}, btn);
+    await page.waitForNavigation();
 
     // Checking if button is not disabled and clicking it if it is
     let i = 0;
     while(true) {
       // Selecting Math Department
-      await page.waitForNavigation();
       let dept = await page.$("#dept");
       if (!dept) {
         console.log(name + " - Attempt " + i++ + ": failed (not loaded properly)");
-        await page.evaluate(() => {
-          location.reload(true)
-        });
+        await page.goto("http://202.129.209.50/ug_ie/studhp.php");
         continue;
       }
 
@@ -47,18 +45,14 @@ const autoRegister = async (port, name, usnValue, pwdValue, branch, index) => {
       let buttons = await page.$$("button");
       if (!buttons) {
         console.log(name + " - Attempt " + i++ + ": failed (not loaded properly)");
-        await page.evaluate(() => {
-          location.reload(true)
-        });
+        await page.goto("http://202.129.209.50/ug_ie/studhp.php");
         continue;
       }
 
       let disabled = await (await buttons[index].getProperty("disabled")).jsonValue();
       if (disabled) {
         console.log(name + " - Attempt " + i++ + ": failed (still disabled)");
-        await page.evaluate(() => {
-          location.reload(true)
-        });
+        await page.goto("http://202.129.209.50/ug_ie/studhp.php");
       } else {
         console.log(name + " - Attempt " + i++ + ": fsuccess");
         await page.evaluate((el) => {el.click()}, buttons[index]);

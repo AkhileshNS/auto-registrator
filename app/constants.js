@@ -1,18 +1,10 @@
 module.exports = {
-  Akhilesh: {
+  Username: {
     port: 9001,
-    name: "AkhileshNS",
-    usn: "1BM16IS009",
-    password: "7U1vJYa",
-    branch: "MAT",
-    option: 1
-  },
-  Anirban: {
-    port: 9002, 
-    name: "Anirban", 
-    usn: "1BM16IS015", 
-    password: "hTl63Ah", 
-    branch: "MAT", 
-    option: 1
+    name: "Username",
+    usn: "Some usn here",
+    password: "password here",
+    branch: "MAT", // options in select
+    option: 1 // In Math, the options are 0-Graph Theory, 1 and 2-Number Theory as per the layout
   }
 };

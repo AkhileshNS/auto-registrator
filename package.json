@@ -10,9 +10,8 @@
   "main": "app/app.js",
   "scripts": {
     "start": "electron .",
-    "Akhilesh": "node app/main.js",
-    "Anirban": "cross-env NAME=\"Anirban\" node app/main.js",
-    "main": "npm-run-all --parallel Akhilesh Anirban"
+    "Username": "node app/main.js",
+    "main": "npm-run-all --parallel Username"
   },
   "devDependencies": {
     "cross-env": "^5.2.0",
